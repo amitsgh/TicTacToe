@@ -57,6 +57,9 @@ public class ticTacToe {
         System.out.println(result);
         break;
       }
+      
+      // close the scan to prevent leakage 
+      scan.close();
     }
   }
 
@@ -111,17 +114,17 @@ public class ticTacToe {
 
   // Checking The condition for Winning
   public static String checkWinner(){
-
-    List topRow = Arrays.asList(1, 2, 3);
-    List middleRow = Arrays.asList(4, 5, 6);
-    List bottomRow = Arrays.asList(7, 8, 9);
-    List leftColumn = Arrays.asList(1, 4, 7); 
-    List middleColumn = Arrays.asList(2, 5, 8);
-    List rightColumn = Arrays.asList(3, 6, 9);
-    List straightDiagonal = Arrays.asList(1, 5, 9);
-    List reverseDiagnoal = Arrays.asList(7, 5, 3);
     
-    List<List> winningConditions = new ArrayList<List>();
+    List<Integer> topRow = Arrays.asList(1, 2, 3);
+    List<Integer> middleRow = Arrays.asList(4, 5, 6);
+    List<Integer> bottomRow = Arrays.asList(7, 8, 9);
+    List<Integer> leftColumn = Arrays.asList(1, 4, 7); 
+    List<Integer> middleColumn = Arrays.asList(2, 5, 8);
+    List<Integer> rightColumn = Arrays.asList(3, 6, 9);
+    List<Integer> straightDiagonal = Arrays.asList(1, 5, 9);
+    List<Integer> reverseDiagnoal = Arrays.asList(7, 5, 3);
+    
+    List<List<Integer>> winningConditions = new ArrayList<List<Integer>>();
     winningConditions.add(topRow);
     winningConditions.add(middleRow);
     winningConditions.add(bottomRow);
@@ -131,7 +134,7 @@ public class ticTacToe {
     winningConditions.add(straightDiagonal);
     winningConditions.add(reverseDiagnoal);
 
-    for (List l: winningConditions){
+    for (List<Integer> l: winningConditions){
       if (humanPositions.containsAll(l)){
         return "Congralutions! You Won!!!";
 
